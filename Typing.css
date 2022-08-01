@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(242, 255, 127);
+}
+.mainDiv{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    place-items: center;
+}
+h1{
+    font-weight: 700;
+    text-shadow: 4px 4px 3px black;
+}
+
+#textType{
+    background-color: #444;
+    box-shadow: 0 0 1px rgba(0,0,0,0.2);
+    border-radius: 10px 10px 0 0;
+    border: 20px solid #34495e;
+    color: white;
+}
+.btnp{
+    padding-top: 20px;
+}
+.mainbtn{
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 5px solid #2980b9;
+    background: #ecf0f1;
+    font-size: 1rem;
+    cursor: pointer;
+}

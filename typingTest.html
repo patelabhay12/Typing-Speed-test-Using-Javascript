@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Your Typing Speed ----</title>
+    <link rel="stylesheet" href="Typing.css">
+</head>
+
+<body>
+    <div class="mainDiv">
+        <div class="centerDiv">
+            <h1>Welcome To Typing Spped Test</h1>
+            <h2 id="msg"></h2>
+            <br>
+            <textarea name="" id="textType" cols="100" rows="10" placeholder="Remember, be nice!"></textarea>
+            <br>
+            <div class="btnp">
+                <button id="btn" class="mainbtn">Start</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let setOfEords = ["My Name si Abhay Patel and i am a student", "Hope we will me meet as soon as possible you know i realy miss u ", "If you are doing well please inform me i will also want to fallow your path to grow", "I ma parsuing b-Tech Form NIET COLAGE U KNOW NIET COLLAGE "];
+
+
+        const msg = document.getElementById('msg');
+        const textType = document.getElementById('textType');
+        const btn = document.getElementById('btn');
+        let startTime, endTime;
+
+        let playGame = () => {
+            let count = Math.floor(Math.random() * setOfEords.length);
+            msg.innerText = setOfEords[count];
+            let date = new Date();
+            startTime = date.getTime();
+            btn.innerText='Done';
+        }
+        let wordCount = (str)=>{
+            let response = str.split(" ").length;
+            return response;
+        }
+
+        let compareWords = (str1,str2) =>{
+            let word1 = str1.split(" ");
+            let word2 = str2.split(" ");
+            let cnt = 0;
+
+            word1.forEach(function(item,index){
+                if(item ==word2[index]){
+                    cnt++;
+                }
+            });
+            
+            let errorWords =(word1.length-cnt);
+            return (cnt +" correct out of " + word1.length + " words and the total number of error are "+errorWords+".");
+        }
+
+        let endPlay = () =>{
+            let date = new Date();
+            endTime = date.getTime();
+            let totaltime = ((endTime-startTime)/1000);
+
+
+            let totalstr = textType.value;
+            let words = wordCount(totalstr);
+
+            let Speed =Math.floor((words/totaltime)*60);
+
+            let finalmsg = "You typed total at " +Speed+ " words per minutes";
+
+            finalmsg += compareWords(msg.innerText,totalstr);
+            msg.innerText=finalmsg;
+
+
+        }
+
+        btn.addEventListener('click', function () {
+            if (this.innerText == 'Start') {
+                textType.ariaDisabled= false;
+                playGame();
+            }else if(this.innerText =='Done'){
+                textType.ariaDisabled = true;
+                btn.innerText='Start';
+                endPlay();
+            }
+        })
+    </script>
+</body>
+
+</html>
